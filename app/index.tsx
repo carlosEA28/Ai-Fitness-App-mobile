@@ -1,6 +1,7 @@
 import { colors } from "@/constants/colors";
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 
+import { Link } from "expo-router";
 import React from "react";
 
 const Index = () => {
@@ -17,9 +18,11 @@ const Index = () => {
         Sua dieta personalizada com inteligência artificial 🍴
       </Text>
 
-      <Pressable style={styles.button}>
-        <Text style={styles.buttonText}>Gerar Dieta</Text>
-      </Pressable>
+      <Link href="/step" asChild>
+        <Pressable style={styles.button}>
+          <Text style={styles.buttonText}>Gerar Dieta</Text>
+        </Pressable>
+      </Link>
     </View>
   );
 };
