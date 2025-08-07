@@ -3,9 +3,11 @@ import Input from "@/components/input";
 import { colors } from "@/constants/colors";
 import { InitialFormData, Initialschema } from "@/schemas/form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { router } from "expo-router";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { useDataStore } from "../store/data";
 
 const Step = () => {
   const {
@@ -15,6 +17,13 @@ const Step = () => {
   } = useForm<InitialFormData>({
     resolver: zodResolver(Initialschema),
   });
+
+  const { setPageOne } = useDataStore();
+
+  function handleCreate(data: InitialFormData) {
+    setPageOne({ ...data });
+    router.push("/create");
+  }
 
   return (
     <View style={styles.container}>
@@ -56,7 +65,7 @@ const Step = () => {
           keyboardType="numeric"
         />
 
-        <Pressable style={styles.button}>
+        <Pressable style={styles.button} onPress={handleSubmit(handleCreate)}>
           <Text style={styles.buttonText}>Avançar</Text>
         </Pressable>
       </ScrollView>
