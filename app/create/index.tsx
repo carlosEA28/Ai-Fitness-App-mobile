@@ -3,6 +3,7 @@ import Select from "@/components/input/select";
 import { colors } from "@/constants/colors";
 import { InitialSelectData, InitialSelectSchema } from "@/schemas/form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { router } from "expo-router";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
@@ -52,7 +53,7 @@ const Create = ({ gender, goal, level }: InitialSelectData) => {
 
   function handleCreate(data: InitialSelectData) {
     setPageTwo({ ...data });
-    // router;
+    router.push("/nutricion");
   }
 
   return (
